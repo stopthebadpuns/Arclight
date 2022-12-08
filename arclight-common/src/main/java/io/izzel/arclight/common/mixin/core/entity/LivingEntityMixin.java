@@ -937,8 +937,13 @@ public abstract class LivingEntityMixin extends EntityMixin implements LivingEnt
         }
     }
 
-    @Redirect(method = "applyArmorCalculations", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;damageArmor(Lnet/minecraft/util/DamageSource;F)V"))
-    public void arclight$muteDamageArmor(LivingEntity entity, DamageSource damageSource, float damage) {
+    // https://github.com/IzzelAliz/Arclight/issues/831
+    @Mixin(value = LivingEntity.class, priority = 1500)
+    public static class ObscureApiCompat {
+
+        @Redirect(method = "applyArmorCalculations", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;damageArmor(Lnet/minecraft/util/DamageSource;F)V"))
+        private void arclight$muteDamageArmor(LivingEntity entity, DamageSource damageSource, float damage) {
+        }
     }
 
     @Redirect(method = "applyPotionDamageCalculations", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isPotionActive(Lnet/minecraft/potion/Effect;)Z"))

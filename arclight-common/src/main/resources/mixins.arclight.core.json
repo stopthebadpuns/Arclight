@@ -130,6 +130,7 @@
     "entity.EntityTypeMixin",
     "entity.IAngerableMixin",
     "entity.LivingEntityMixin",
+    "entity.LivingEntityMixin$ApotheosisCompatMixin",
     "entity.MobEntityMixin",
     "entity.ai.attributes.RangedAttributeMixin",
     "entity.ai.brain.BrainUtilMixin",
